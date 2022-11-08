@@ -6,16 +6,16 @@ import turtle
 
 # Create screen
 sc = turtle.Screen()
-sc.title("Pong game")
-sc.bgcolor("red")
+sc.title("Two players Pong game")
+sc.bgcolor("green")
 sc.setup(width=800, height=400)
 
 # Left paddle
 left_pad = turtle.Turtle()
 left_pad.speed(1)
 left_pad.shape("square")
-left_pad.color("black")
-left_pad.shapesize(stretch_wid=4, stretch_len=2)
+left_pad.color("yellow")
+left_pad.shapesize(stretch_wid=12, stretch_len=2)
 left_pad.penup()
 left_pad.goto(-300, 0)
 
@@ -23,8 +23,8 @@ left_pad.goto(-300, 0)
 right_pad = turtle.Turtle()
 right_pad.speed(0)
 right_pad.shape("square")
-right_pad.color("green")
-right_pad.shapesize(stretch_wid=4, stretch_len=2)
+right_pad.color("yellow")
+right_pad.shapesize(stretch_wid=12, stretch_len=2)
 right_pad.penup()
 right_pad.goto(400, 0)
 
@@ -32,7 +32,7 @@ right_pad.goto(400, 0)
 hit_ball = turtle.Turtle()
 hit_ball.speed(40)
 hit_ball.shape("circle")
-hit_ball.color("blue")
+hit_ball.color("white")
 hit_ball.penup()
 hit_ball.goto(0, 0)
 hit_ball.dx = 5
