@@ -1,5 +1,4 @@
 
-
 # Import required library
 import turtle
 
@@ -39,8 +38,8 @@ hit_ball.dx = 5
 hit_ball.dy = -5
 
 # Initialize the score
-left_player = 0
-right_player = 0
+Player_A = 0
+Player_B = 0
 
 # Displays the score
 sketch = turtle.Turtle()
@@ -49,7 +48,7 @@ sketch.color("blue")
 sketch.penup()
 sketch.hideturtle()
 sketch.goto(0, 260)
-sketch.write("Left_player : 0    Right_player: 0",
+sketch.write("Player_A : 0    Player_B: 0",
              align="center", font=("Courier", 24, "normal"))
 
 
@@ -103,18 +102,18 @@ while True:
     if hit_ball.xcor() > 500:
         hit_ball.goto(0, 0)
         hit_ball.dy *= -1
-        left_player += 1
+        Player_A += 1
         sketch.clear()
-        sketch.write("Left_player : {}    Right_player: {}".format(
-            left_player, right_player), align="center",
+        sketch.write("Player_A : {}    Player_B: {}".format(
+            Player_A, Player_B), align="center",
             font=("Courier", 24, "normal"))
 
     if hit_ball.xcor() < -500:
         hit_ball.goto(0, 0)
         hit_ball.dy *= -1
-        right_player += 1
+        Player_B += 1
         sketch.clear()
-        sketch.write("Left_player : {}    Right_player: {}".format(
-            left_player, right_player), align="center",
-            font=("Courier", 24, "normal"))
-
+        sketch.write("Player_A : {}    Player_B: {}".format(
+            Player_A, Player_B), align="center",
+            font=("Courier", 24, "normal")
+        )
