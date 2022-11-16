@@ -75,8 +75,8 @@ def paddlebdown():
 
 
 sc.listen()
-sc.onkeypress(paddleaup, "e")
-sc.onkeypress(paddleadown, "x")
+sc.onkeypress(paddleaup, "u")
+sc.onkeypress(paddleadown, "d")
 sc.onkeypress(paddlebup, "Up")
 sc.onkeypress(paddlebdown, "Down")
 
