@@ -73,7 +73,7 @@ def paddlebdown():
     y -= 20
     right_paddle.sety(y)
 
-
+#Ricky was here
 sc.listen()
 sc.onkeypress(paddleaup, "u")
 sc.onkeypress(paddleadown, "d")
