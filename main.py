@@ -13,7 +13,7 @@ left_paddle.shape("square")
 left_paddle.color("yellow")
 left_paddle.shapesize(stretch_wid=12, stretch_len=2)
 left_paddle.penup()
-left_paddle.goto(-300, 0)
+left_paddle.goto(-400, 0)
 
 # This is defining the right paddle shape, color, and shape size.
 right_paddle = turtle.Turtle()
@@ -73,7 +73,6 @@ def paddlebdown():
     y -= 20
     right_paddle.sety(y)
 
-#Ricky was here
 sc.listen()
 sc.onkeypress(paddleaup, "u")
 sc.onkeypress(paddleadown, "d")
@@ -85,15 +84,15 @@ while True:
 
     hit_ball.setx(hit_ball.xcor() + hit_ball.dx)
     hit_ball.sety(hit_ball.ycor() + hit_ball.dy)
-
+    # Bounce the ball off the top of the screen
     if hit_ball.ycor() > 280:
         hit_ball.sety(280)
         hit_ball.dy *= -1
-
+    # Bounce the ball off the bottom of the screen
     if hit_ball.ycor() < -280:
         hit_ball.sety(-280)
         hit_ball.dy *= -1
-
+    # Detect if ball goes too far to the right, and increase score if so
     if hit_ball.xcor() > 500:
         hit_ball.goto(0, 0)
         hit_ball.dy *= -1
@@ -102,7 +101,7 @@ while True:
         sketch.write("Player_A : {}    Player_B: {}".format(
             Player_A, Player_B), align="center",
             font=("Courier", 24, "normal"))
-
+    # Detect if ball goes too far to the left, and increase score if so
     if hit_ball.xcor() < -500:
         hit_ball.goto(0, 0)
         hit_ball.dy *= -1
@@ -111,4 +110,13 @@ while True:
         sketch.write("Player_A : {}    Player_B: {}".format(
             Player_A, Player_B), align="center",
             font=("Courier", 24, "normal")
+
         )
+    #If the ball is gonna hit the right paddle, reverse its direction upon impact
+    if hit_ball.xcor() > 380 and right_paddle.distance(hit_ball.xcor(),hit_ball.ycor()) <100:
+        hit_ball.setx(380)
+        hit_ball.dx *= -1
+    #If the ball is gonna hit the left paddle, reverse its direction upon impact
+    if hit_ball.xcor() < -380 and left_paddle.distance(hit_ball.xcor(),hit_ball.ycor()) <100:
+        hit_ball.setx(-380)
+        hit_ball.dx *= -1
