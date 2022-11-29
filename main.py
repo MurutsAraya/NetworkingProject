@@ -62,35 +62,48 @@ sketch.write("Player_A : 0    Player_B: 0",
 # This is the functions to move the paddle vertically or up and down.
 def paddleaup():
     y = left_paddle.ycor()
-    y += 20
+    if y >= 120:
+        y = y
+    else:
+        y += 20
     left_paddle.sety(y)
 
 
 def paddleadown():
     y = left_paddle.ycor()
-    y -= 20
+    if y <= -120:
+        y = y
+    else:
+        y -= 20
     left_paddle.sety(y)
 
 
 def paddlebup():
     y = right_paddle.ycor()
-    y += 20
+    if y >= 120:
+        y = y
+    else:
+        y += 20
     right_paddle.sety(y)
 
 
 def paddlebdown():
     y = right_paddle.ycor()
-    y -= 20
+    if y <= -120:
+        y = y
+    else:
+        y -= 20
     right_paddle.sety(y)
 
-sc.listen()
-sc.onkeypress(paddleaup, "u")
-sc.onkeypress(paddleadown, "d")
-sc.onkeypress(paddlebup, "Up")
-sc.onkeypress(paddlebdown, "Down")
+
 
 while True:
     sc.update()
+    sc.listen()
+    sc.onkeypress(paddleaup, "u")
+    sc.onkeypress(paddleadown, "d")
+    sc.onkeypress(paddlebup, "Up")
+    sc.onkeypress(paddlebdown, "Down")
 
     hit_ball.setx(hit_ball.xcor() + hit_ball.dx)
     hit_ball.sety(hit_ball.ycor() + hit_ball.dy)
