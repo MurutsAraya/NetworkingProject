@@ -1,10 +1,20 @@
 import turtle
 
-# We are creating here the screen with a green background color, size, and screen tittle name.
+# We are creating here the screen with a green background color, size, and screen title name.
 sc = turtle.Screen()
 sc.title("Two players Pong game")
 sc.bgcolor("green")
 sc.setup(width=800, height=400)
+
+#Border to bounce off of
+
+Border = turtle.Turtle()
+Border.shape("square")
+Border.color("black")
+Border.shapesize(stretch_wid=25, stretch_len=52)
+Border.penup()
+Border.goto(0,0)
+
 
 # we are defining the left paddle shape, color, and shape size.
 left_paddle = turtle.Turtle()
@@ -85,12 +95,12 @@ while True:
     hit_ball.setx(hit_ball.xcor() + hit_ball.dx)
     hit_ball.sety(hit_ball.ycor() + hit_ball.dy)
     # Bounce the ball off the top of the screen
-    if hit_ball.ycor() > 280:
-        hit_ball.sety(280)
+    if hit_ball.ycor() > 240:
+        hit_ball.sety(240)
         hit_ball.dy *= -1
     # Bounce the ball off the bottom of the screen
-    if hit_ball.ycor() < -280:
-        hit_ball.sety(-280)
+    if hit_ball.ycor() < -240:
+        hit_ball.sety(-240)
         hit_ball.dy *= -1
     # Detect if ball goes too far to the right, and increase score if so
     if hit_ball.xcor() > 500:
