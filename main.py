@@ -1,4 +1,18 @@
 import turtle
+import socket
+
+# here we made a socket object with the parameters passed to it.
+# socket.AF_INET refers to the ip4 address and the socket.SOCK_STREAM refers to the connection oriented TCP protocol.
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# we are declaring the port we need to connect.
+# port = 8888
+# here we bind the port.
+s.bind(('0.0.0.0', 8888))
+# this is the listening mode of the server to accept the incoming client
+s.listen(3)
+# describing the connection with the client.
+clientSocket, address = s.accept()
+# we are closing the connection here
 
 # We are creating here the screen with a green background color, size, and screen title name.
 sc = turtle.Screen()
@@ -6,15 +20,14 @@ sc.title("Two players Pong game")
 sc.bgcolor("green")
 sc.setup(width=800, height=400)
 
-#Border to bounce off of
+# Border to bounce off of
 
 Border = turtle.Turtle()
 Border.shape("square")
 Border.color("black")
 Border.shapesize(stretch_wid=25, stretch_len=52)
 Border.penup()
-Border.goto(0,0)
-
+Border.goto(0, 0)
 
 # we are defining the left paddle shape, color, and shape size.
 left_paddle = turtle.Turtle()
@@ -96,14 +109,14 @@ def paddlebdown():
     right_paddle.sety(y)
 
 
+sc.listen()
+sc.onkeypress(paddleaup, "u")
+sc.onkeypress(paddleadown, "d")
+sc.onkeypress(paddlebup, "Up")
+sc.onkeypress(paddlebdown, "Down")
 
 while True:
     sc.update()
-    sc.listen()
-    sc.onkeypress(paddleaup, "u")
-    sc.onkeypress(paddleadown, "d")
-    sc.onkeypress(paddlebup, "Up")
-    sc.onkeypress(paddlebdown, "Down")
 
     hit_ball.setx(hit_ball.xcor() + hit_ball.dx)
     hit_ball.sety(hit_ball.ycor() + hit_ball.dy)
@@ -135,11 +148,11 @@ while True:
             font=("Courier", 24, "normal")
 
         )
-    #If the ball is gonna hit the right paddle, reverse its direction upon impact
-    if hit_ball.xcor() > 380 and right_paddle.distance(hit_ball.xcor(),hit_ball.ycor()) <100:
+    # If the ball is going to hit the right paddle, reverse its direction upon impact
+    if hit_ball.xcor() > 380 and right_paddle.distance(hit_ball.xcor(), hit_ball.ycor()) < 100:
         hit_ball.setx(380)
         hit_ball.dx *= -1
-    #If the ball is gonna hit the left paddle, reverse its direction upon impact
-    if hit_ball.xcor() < -380 and left_paddle.distance(hit_ball.xcor(),hit_ball.ycor()) <100:
+    # If the ball is going to hit the left paddle, reverse its direction upon impact
+    if hit_ball.xcor() < -380 and left_paddle.distance(hit_ball.xcor(), hit_ball.ycor()) < 100:
         hit_ball.setx(-380)
         hit_ball.dx *= -1
